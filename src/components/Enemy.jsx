@@ -8,7 +8,7 @@ export default function Enemy() {
   const gltf = useLoader(GLTFLoader, "./oilBarrel.glb");
   const [velocity, setVelocity] = useState({ x: 0, y: 0, z: 0 });
 
-  const { ref, actions, names } = useAnimations(animations);
+  const { ref } = useAnimations(animations);
 
   useFrame(() => {
     let newVelocity = { ...velocity };
