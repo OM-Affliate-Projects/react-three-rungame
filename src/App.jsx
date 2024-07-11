@@ -3,6 +3,7 @@ import { OrbitControls, Environment } from "@react-three/drei";
 import { Suspense } from "react";
 import { Player } from "./components";
 import BasePlate from "./components/BasePlate";
+import Enemy from "./components/Enemy";
 
 export default function App() {
   return (
@@ -12,6 +13,7 @@ export default function App() {
     >
       <Suspense fallback={null}>
         <Player />
+        <Enemy/>
         <BasePlate args={[15,1,50]} color={"coral"}/>
         <OrbitControls />
         <Environment preset="park" background />
