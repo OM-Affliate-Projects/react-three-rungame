@@ -1,11 +1,10 @@
-import { useLoader, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { useEffect, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 export default function Player({ position }) {
-  const { animations } = useGLTF("/ReadiedAsset.glb");
-  const gltf = useLoader(GLTFLoader, "./ReadiedAsset.glb");
+  const { scene, animations } = useGLTF("/ReadiedAsset.glb");
+  const { ref, actions, names } = useAnimations(animations);
 
   const [velocity, setVelocity] = useState({ x: 0, y: 0, z: 0 });
   const [keysPressed, setKeysPressed] = useState({
@@ -15,8 +14,6 @@ export default function Player({ position }) {
     rightward: false,
     jump: false,
   });
-
-  const { ref, actions, names } = useAnimations(animations);
 
   const [index] = useState(0);
 
@@ -132,7 +129,7 @@ export default function Player({ position }) {
   return (
     <primitive
       rotation-y={3}
-      object={gltf.scene}
+      object={scene}
       ref={ref}
       scale={1}
       position={position}
