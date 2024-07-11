@@ -6,7 +6,7 @@ export default function BasePlate({args, color}) {
 
 
     return (
-        <mesh ref={mesh} position={[0, -0.5, 15]}>
+        <mesh ref={mesh} position={[0, -0.5, -20]}>
           <boxGeometry args={args} />
           <meshStandardMaterial color={color} />
         </mesh>

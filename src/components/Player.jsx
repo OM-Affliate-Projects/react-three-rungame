@@ -9,6 +9,8 @@ export default function Player() {
   
 
   const [velocity, setVelocity] = useState({ x: 0, y: 0, z: 0 });
+  const [position, setPosition] = useState({x: 0, y: 0, z: 0})
+  const [rotation, setRotation] = useState({x: 0, y: 0, z: 0})
   const [keysPressed, setKeysPressed] = useState({
     forward: false,
     backward: false,
@@ -108,6 +110,9 @@ export default function Player() {
       newVelocity.isJumping = true;
     }
 
+    //Default Rotation
+    
+
     // Apply gravity
     newVelocity.y -= 0.005;
 
@@ -145,6 +150,7 @@ export default function Player() {
   return (
     <>
       <primitive
+        rotation-y={3}
         object={gltf.scene}
         ref={ref}
         scale={1}
