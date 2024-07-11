@@ -138,9 +138,5 @@ export default function Player() {
     return () => actions[names[index]].stop();
   }, [index, actions, names]);
 
-  return (
-    <>
-      <primitive rotation-y={3} object={gltf.scene} ref={ref} scale={1} />
-    </>
-  );
+  return <primitive rotation-y={3} object={gltf.scene} ref={ref} scale={1} />;
 }

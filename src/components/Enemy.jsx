@@ -3,7 +3,7 @@ import { useEffect, useState, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
-export default function Enemy() {
+export default function Enemy({ positionX }) {
   const { animations } = useGLTF("./oilBarrel.glb");
   const gltf = useLoader(GLTFLoader, "./oilBarrel.glb");
   const [velocity, setVelocity] = useState({ x: 0, y: 0, z: 0 });
@@ -20,15 +20,14 @@ export default function Enemy() {
   });
 
   return (
-    <>
-      <primitive
-        object={gltf.scene}
-        scale={0.5}
-        rotation-z={1.57}
-        position-y={0.35}
-        position-z={-20}
-        ref={ref}
-      />
-    </>
+    <primitive
+      object={gltf.scene}
+      scale={0.5}
+      rotation-z={1.57}
+      position-y={0.35}
+      position-z={-20}
+      position-x={positionX}
+      ref={ref}
+    />
   );
 }
