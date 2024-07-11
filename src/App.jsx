@@ -6,11 +6,11 @@ import { Player, BasePlate, Enemies } from "./components";
 export default function App() {
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 75 }}
+      camera={{ position: [0, 3, 5], fov: 75 }}
       style={{ width: "100vw", height: "100vh" }}
     >
       <Suspense fallback={null}>
-        {/* <Player /> */}
+        <Player />
         <Enemies />
         <BasePlate args={[15, 1, 50]} color={"coral"} />
         <OrbitControls />

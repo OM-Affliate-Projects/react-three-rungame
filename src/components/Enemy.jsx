@@ -1,32 +1,27 @@
-import { useLoader, useFrame } from "@react-three/fiber";
-import { useEffect, useState, useRef } from "react";
-import { useGLTF, useAnimations } from "@react-three/drei";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { useMemo, useRef } from "react";
 
 export default function Enemy({ positionX }) {
-  const { animations } = useGLTF("./oilBarrel.glb");
-  const gltf = useLoader(GLTFLoader, "./oilBarrel.glb");
-  const [velocity, setVelocity] = useState({ x: 0, y: 0, z: 0 });
-
-  const { ref } = useAnimations(animations);
+  const model = useGLTF("./oilBarrel.glb");
+  const scene = useMemo(() => {
+    return model.scene.clone();
+  }, [model]);
+  const ref = useRef();
+  const velocity = 0.05;
 
   useFrame(() => {
-    let newVelocity = { ...velocity };
-    newVelocity.z = 0.05;
-
-    ref.current.position.z += newVelocity.z;
-
-    setVelocity(newVelocity);
+    if (ref.current) {
+      ref.current.position.z += velocity;
+    }
   });
 
   return (
     <primitive
-      object={gltf.scene}
+      object={scene}
       scale={0.5}
       rotation-z={1.57}
-      position-y={0.35}
-      position-z={-20}
-      position-x={positionX}
+      position={[positionX, 0.35, -20]}
       ref={ref}
     />
   );
