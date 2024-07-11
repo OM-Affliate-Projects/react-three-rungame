@@ -1,5 +1,5 @@
 import { useLoader, useFrame } from "@react-three/fiber";
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
@@ -18,7 +18,7 @@ export default function Player({ position }) {
 
   const { ref, actions, names } = useAnimations(animations);
 
-  const [index, setIndex] = useState(0);
+  const [index] = useState(0);
 
   useEffect(() => {
     const handleKeyDown = (event) => {

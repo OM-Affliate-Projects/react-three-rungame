@@ -16,7 +16,7 @@ export default function Enemies() {
     setFrames((prevFrames) => prevFrames + 1);
 
     if (frames % spawnRateRef.current === 0) {
-      if (spawnRate > 50) setSpawnRate((prevSpawnRate) => prevSpawnRate - 20);
+      if (spawnRate > 20) setSpawnRate((prevSpawnRate) => prevSpawnRate - 20);
 
       const newEnemy = {
         id: Math.random(),
@@ -34,10 +34,7 @@ export default function Enemies() {
   return (
     <>
       {enemies.map((enemy) => (
-        <>
-          {console.log(enemy.id)}
-          <Enemy key={enemy.id} positionX={enemy.x} />
-        </>
+        <Enemy key={enemy.id} positionX={enemy.x} />
       ))}
     </>
   );
