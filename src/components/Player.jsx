@@ -6,11 +6,10 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 export default function Player() {
   const { nodes, animations } = useGLTF("/ReadiedAsset.glb");
   const gltf = useLoader(GLTFLoader, "./ReadiedAsset.glb");
-  
 
   const [velocity, setVelocity] = useState({ x: 0, y: 0, z: 0 });
-  const [position, setPosition] = useState({x: 0, y: 0, z: 0})
-  const [rotation, setRotation] = useState({x: 0, y: 0, z: 0})
+  const [position, setPosition] = useState({ x: 0, y: 0, z: 0 });
+  const [rotation, setRotation] = useState({ x: 0, y: 0, z: 0 });
   const [keysPressed, setKeysPressed] = useState({
     forward: false,
     backward: false,
@@ -21,8 +20,6 @@ export default function Player() {
 
   const { ref, actions, names } = useAnimations(animations);
   const modelRef = useRef();
-
-
 
   const [index, setIndex] = useState(0);
 
@@ -111,7 +108,6 @@ export default function Player() {
     }
 
     //Default Rotation
-    
 
     // Apply gravity
     newVelocity.y -= 0.005;
@@ -142,20 +138,9 @@ export default function Player() {
     return () => actions[names[index]].stop();
   }, [index, actions, names]);
 
-  const clickME = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % names.length);
-    console.log(index);
-  };
-
   return (
     <>
-      <primitive
-        rotation-y={3}
-        object={gltf.scene}
-        ref={ref}
-        scale={1}
-        onPointerDown={clickME}
-      />
+      <primitive rotation-y={3} object={gltf.scene} ref={ref} scale={1} />
     </>
   );
 }
