@@ -26,6 +26,7 @@ export default function Enemy() {
         scale={0.5}
         rotation-z={1.57}
         position-y={0.35}
+        position-z={-20}
         ref={ref}
       />
     </>
