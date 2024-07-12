@@ -25,6 +25,11 @@ export default function Enemies() {
 
       setEnemies((prevEnemies) => [...prevEnemies, newEnemy]);
     }
+
+    if (enemies.length > 50) {
+      setEnemies((prevEnemies) => prevEnemies.slice(1));
+    }
+    console.log(enemies.length);
   });
 
   const getRandomXPosition = () => {
